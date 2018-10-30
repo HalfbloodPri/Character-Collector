@@ -24,11 +24,11 @@ Rectangle {
             id: personName
             height: parent.height
             anchors.left: parent.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: drawBoardRoot.totalSize/40
             width: parent.width-2*anchors.leftMargin
             anchors.verticalCenter: parent.verticalCenter
             color: "black"
-            font.pointSize: 14
+            font.pointSize: drawBoardRoot.totalSize*0.0357
             selectByMouse: true
             wrapMode: TextInput.WordWrap
             verticalAlignment: TextInput.AlignVCenter
@@ -51,7 +51,7 @@ Rectangle {
             text: "清除"
             anchors.centerIn: parent
             color: "whitesmoke"
-            font.pixelSize: 20
+            font.pixelSize: drawBoardRoot.totalSize/20
             font.bold: true
         }
         MouseArea{
@@ -80,7 +80,7 @@ Rectangle {
             text: "保存"
             anchors.centerIn: parent
             color: "whitesmoke"
-            font.pixelSize: 20
+            font.pixelSize: drawBoardRoot.totalSize/20
             font.bold: true
         }
 
@@ -179,8 +179,8 @@ Rectangle {
         Image {
             id: mouseIcon;
             source: "./icons/mouseIcon.png"
-            width: 2*drawBoardRoot.pixelSize
-            height: 2*drawBoardRoot.pixelSize
+            width: 2.3*drawBoardRoot.pixelSize
+            height: 2.3*drawBoardRoot.pixelSize
             visible: false
             x: drawArea.mouseX - width/2
             y: drawArea.mouseY - height/2

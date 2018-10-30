@@ -4,8 +4,8 @@ import QtQuick.Controls 1.4
 
 Rectangle {
     id: mnistTestRoot
-    width: 730
-    height: 600
+    width: drawBoardRoot.totalSize*2
+    height: drawBoardRoot.totalSize*1.5
     color: "gray"
     border.color: "gray"
     border.width: 1
@@ -15,17 +15,17 @@ Rectangle {
         id: handwrittenArea
         anchors.left: parent.left
         anchors.top: parent.top
-        anchors.leftMargin: 10
-        anchors.topMargin: 50
+        anchors.leftMargin: drawBoardRoot.totalSize/40
+        anchors.topMargin: drawBoardRoot.totalSize/8
     }
 
     Text {
         id: trainLabel
         anchors.left: handwrittenArea.right
-        anchors.leftMargin: 160
+        anchors.leftMargin: drawBoardRoot.totalSize*0.4
         anchors.top: parent.top
-        anchors.topMargin: 100
-        font.pointSize: 96
+        anchors.topMargin: drawBoardRoot.totalSize/4
+        font.pointSize: drawBoardRoot.totalSize/4
         text: mnistTestRoot.label
         color: "whitesmoke"
     }
@@ -33,18 +33,18 @@ Rectangle {
     Grid {
         id: numGrid
         anchors.top: trainLabel.bottom
-        anchors.topMargin: 50
+        anchors.topMargin: drawBoardRoot.totalSize/8
         anchors.horizontalCenter: trainLabel.horizontalCenter
         columns: 3
         rows: 4
-        spacing: 10
+        spacing: drawBoardRoot.totalSize/40
         Component {
             id: labelCheckBoxStyle
             CheckBoxStyle {
                 spacing: 5
                 indicator: Rectangle{
-                    implicitHeight: 40
-                    implicitWidth: 40
+                    implicitHeight: drawBoardRoot.totalSize/10
+                    implicitWidth: drawBoardRoot.totalSize/10
                     border.width: 2
                     border.color: "lightgrey"
                     color: "transparent"
@@ -58,7 +58,7 @@ Rectangle {
                 }
                 label: Text{
                     text: control.text
-                    font.pointSize: 11.2
+                    font.pointSize: drawBoardRoot.totalSize*0.028
                     color: "whitesmoke"
                 }
             }
@@ -128,8 +128,8 @@ Rectangle {
             onClicked: { mnistTestRoot.label = "3" }
         }
         Rectangle {
-            width: 40
-            height: 40
+            width: drawBoardRoot.totalSize/10
+            height: drawBoardRoot.totalSize/10
             color: "transparent"
         }
         CheckBox {
@@ -140,8 +140,8 @@ Rectangle {
             onClicked: { mnistTestRoot.label = "0" }
             }
         Rectangle {
-            width: 40
-            height: 40
+            width: drawBoardRoot.totalSize/10
+            height: drawBoardRoot.totalSize/10
             color: "transparent"
         }
     }
