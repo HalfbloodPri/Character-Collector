@@ -23,7 +23,7 @@ Rectangle {
             Text{
                 anchors.centerIn: parent
                 text: index + ":" + drawBoardRoot.numList[index]
-                font.pointSize: drawBoardRoot.totalSize*0.015
+                font.pointSize: drawBoardRoot.totalSize*0.008
                 color: "snow"
             }
         }
