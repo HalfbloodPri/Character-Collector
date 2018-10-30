@@ -19,7 +19,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.leftMargin: mnistTestRoot.totalSize/40
-        anchors.topMargin: mnistTestRoot.totalSize/8
+        anchors.topMargin: mnistTestRoot.totalSize/20
     }
 
     Text {
