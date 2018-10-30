@@ -10,7 +10,7 @@ Rectangle {
     border.color: "gray"
     border.width: 1
     property string label: "X"
-    property int pixelSize: 14           //28x28的网格，每一格的边长
+    property int pixelSize: 35           //28x28的网格，每一格的边长
     property int pixelNum: 28
     property int totalSize: pixelNum*pixelSize          //网格总大小，14x28=392
 
@@ -28,7 +28,7 @@ Rectangle {
         anchors.leftMargin: mnistTestRoot.totalSize*0.4
         anchors.top: parent.top
         anchors.topMargin: mnistTestRoot.totalSize/4
-        font.pointSize: mnistTestRoot.totalSize/4
+        font.pointSize: mnistTestRoot.totalSize/5
         text: mnistTestRoot.label
         color: "whitesmoke"
     }

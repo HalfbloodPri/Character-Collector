@@ -7,7 +7,7 @@ Rectangle {
     width: totalSize
     height: totalSize+totalSize/5
     color: "transparent"
-    property int pixelSize: 14           //28x28的网格，每一格的边长
+    property int pixelSize: 35           //28x28的网格，每一格的边长
     property int pixelNum: 28
     property int totalSize: pixelNum*pixelSize          //网格总大小，14x28=392
 
@@ -28,7 +28,7 @@ Rectangle {
             width: parent.width-2*anchors.leftMargin
             anchors.verticalCenter: parent.verticalCenter
             color: "black"
-            font.pointSize: drawBoardRoot.totalSize*0.0357
+            font.pointSize: drawBoardRoot.totalSize*0.025
             selectByMouse: true
             wrapMode: TextInput.WordWrap
             verticalAlignment: TextInput.AlignVCenter
