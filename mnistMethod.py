@@ -64,4 +64,10 @@ class MnistHandler(QObject):
             except IOError as e:
                 print(str(e))
 
+    @pyqtSlot(str,result=list)
+    def getNumList(self,name):
+        numList = []
+        for i in range(10):
+            numList.append(str(self.personProperty[name][str(i)]))
+        return numList.copy()
 mnistHandler = MnistHandler()

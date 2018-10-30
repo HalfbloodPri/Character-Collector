@@ -10,6 +10,46 @@ Rectangle {
     property int pixelSize: 35           //28x28的网格，每一格的边长
     property int pixelNum: 28
     property int totalSize: pixelNum*pixelSize          //网格总大小，14x28=392
+    property var numList: ['0','0','0','0','0','0','0','0','0','0']
+
+    Component{
+        id: numListStyle
+        Rectangle{
+            width: drawBoardRoot.totalSize/10
+            height: drawBoardRoot.totalSize/20
+            color:"transparent"
+            border.width: 1
+            border.color: "black"
+            Text{
+                anchors.centerIn: parent
+                text: index + ":" + drawBoardRoot.numList[index]
+                font.pointSize: drawBoardRoot.totalSize*0.015
+                color: "snow"
+            }
+        }
+    }
+
+    Text{
+        id: personNameText
+        text: personName.text + '已写字符数：'
+        font.pointSize: drawBoardRoot.totalSize*0.015
+        color: "snow"
+        anchors.left: drawBoardRoot.left
+        anchors.leftMargin: drawBoardRoot.totalSize/9
+        anchors.verticalCenter: numWritten.verticalCenter
+    }
+
+    ListView{
+        id: numWritten
+        width: drawBoardRoot.totalSize
+        height: drawBoardRoot.totalSize/20
+        orientation: ListView.Horizontal
+        model: drawBoardRoot.numList
+        delegate: numListStyle
+        anchors.left: personNameText.right
+        anchors.top:drawBoardRoot.top
+        anchors.topMargin: height/2
+    }
 
     Rectangle{
         id: personNameBg
@@ -17,7 +57,7 @@ Rectangle {
         height: drawBoardRoot.totalSize/15
         color: "snow"
         anchors.left: drawBoardRoot.left
-        anchors.top:drawBoardRoot.top
+        anchors.top: numWritten.bottom
         anchors.leftMargin: drawBoardRoot.totalSize/9
         anchors.topMargin: height/2
         TextInput{
@@ -96,6 +136,7 @@ Rectangle {
             onClicked: {
                 drawBoard.save("mnistImage.bmp")
                 mnistHandler.setImageData(mnistTestRoot.label,personName.text)
+                drawBoardRoot.numList = mnistHandler.getNumList(personName.text)
                 pixelateImage.sourceSize.width = 0
                 pixelateImage.sourceSize.height = 0
                 pixelateImage.sourceSize.width = drawBoardRoot.totalSize
