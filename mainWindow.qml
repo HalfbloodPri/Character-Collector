@@ -4,28 +4,31 @@ import QtQuick.Controls 1.4
 
 Rectangle {
     id: mnistTestRoot
-    width: drawBoardRoot.totalSize*2
-    height: drawBoardRoot.totalSize*1.5
+    width: mnistTestRoot.totalSize*2
+    height: mnistTestRoot.totalSize*1.5
     color: "gray"
     border.color: "gray"
     border.width: 1
     property string label: "X"
+    property int pixelSize: 14           //28x28的网格，每一格的边长
+    property int pixelNum: 28
+    property int totalSize: pixelNum*pixelSize          //网格总大小，14x28=392
 
     WritingPad {
         id: handwrittenArea
         anchors.left: parent.left
         anchors.top: parent.top
-        anchors.leftMargin: drawBoardRoot.totalSize/40
-        anchors.topMargin: drawBoardRoot.totalSize/8
+        anchors.leftMargin: mnistTestRoot.totalSize/40
+        anchors.topMargin: mnistTestRoot.totalSize/8
     }
 
     Text {
         id: trainLabel
         anchors.left: handwrittenArea.right
-        anchors.leftMargin: drawBoardRoot.totalSize*0.4
+        anchors.leftMargin: mnistTestRoot.totalSize*0.4
         anchors.top: parent.top
-        anchors.topMargin: drawBoardRoot.totalSize/4
-        font.pointSize: drawBoardRoot.totalSize/4
+        anchors.topMargin: mnistTestRoot.totalSize/4
+        font.pointSize: mnistTestRoot.totalSize/4
         text: mnistTestRoot.label
         color: "whitesmoke"
     }
@@ -33,18 +36,18 @@ Rectangle {
     Grid {
         id: numGrid
         anchors.top: trainLabel.bottom
-        anchors.topMargin: drawBoardRoot.totalSize/8
+        anchors.topMargin: mnistTestRoot.totalSize/8
         anchors.horizontalCenter: trainLabel.horizontalCenter
         columns: 3
         rows: 4
-        spacing: drawBoardRoot.totalSize/40
+        spacing: mnistTestRoot.totalSize/40
         Component {
             id: labelCheckBoxStyle
             CheckBoxStyle {
                 spacing: 5
                 indicator: Rectangle{
-                    implicitHeight: drawBoardRoot.totalSize/10
-                    implicitWidth: drawBoardRoot.totalSize/10
+                    implicitHeight: mnistTestRoot.totalSize/10
+                    implicitWidth: mnistTestRoot.totalSize/10
                     border.width: 2
                     border.color: "lightgrey"
                     color: "transparent"
@@ -58,7 +61,7 @@ Rectangle {
                 }
                 label: Text{
                     text: control.text
-                    font.pointSize: drawBoardRoot.totalSize*0.028
+                    font.pointSize: mnistTestRoot.totalSize*0.028
                     color: "whitesmoke"
                 }
             }
@@ -128,8 +131,8 @@ Rectangle {
             onClicked: { mnistTestRoot.label = "3" }
         }
         Rectangle {
-            width: drawBoardRoot.totalSize/10
-            height: drawBoardRoot.totalSize/10
+            width: mnistTestRoot.totalSize/10
+            height: mnistTestRoot.totalSize/10
             color: "transparent"
         }
         CheckBox {
@@ -140,8 +143,8 @@ Rectangle {
             onClicked: { mnistTestRoot.label = "0" }
             }
         Rectangle {
-            width: drawBoardRoot.totalSize/10
-            height: drawBoardRoot.totalSize/10
+            width: mnistTestRoot.totalSize/10
+            height: mnistTestRoot.totalSize/10
             color: "transparent"
         }
     }
